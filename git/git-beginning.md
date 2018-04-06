@@ -262,3 +262,39 @@ Git 中文件的状态变化周期
 #### 删除远程仓库
 
 `$ git remote rm <remote-name>`
+
+### 2.6 标签
+
+#### 列出标签
+
+`$ git tag`
+
+#### 查看特定标签
+
+`$ git tag -l 'v1.2.2*'`
+
+#### 创建标签
+
+轻量标签：
+
+- 给最新的commit创建标签： `$ git tag <name>`
+- 给某个版本创建标签： `$ git tag <name> <版本号>`
+
+附注标签：
+
+- 给标签添加附注信息： `$ git tag <name> -a -m "标签说明"`
+
+#### 查看标签
+
+- 查看所有标签： `$ git tag`
+- 查看某一标签详情： `$ git show <tag-name>`
+
+#### 推送标签到远程仓库
+
+- 推送指定标签： `$ git push origin <tag-name>`
+- 推送全部未推送的标签： `$ git push origin --tags`
+
+#### 删除标签
+
+- 删除本地标签： `$ git tag -d <tag-name>`
+- 删除远程标签： `$ git push origin :ref/tags/<tag-name>`
