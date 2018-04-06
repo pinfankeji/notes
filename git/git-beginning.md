@@ -6,9 +6,9 @@ Git 学习入门笔记
 
 ### 1.1 版本控制
 
-- 本地版本控制系统，如RCS
-- 集中化的版本控制系统，如CVS、SVN
-- 分布式版本控制系统，如Git
+- 本地版本控制系统，如 RCS
+- 集中化的版本控制系统，如 CVS、SVN
+- 分布式版本控制系统，如 Git
 
 ### 1.2 Git 基础
 
@@ -194,3 +194,71 @@ Git 中文件的状态变化周期
 #### 移动文件
 
 `$ git mv <file_from> <file_to>`
+
+### 2.3 查看提交历史
+
+`$ git log`
+
+经常用的组合选项：
+
+`$ git log --graph --pretty=oneline --abbrev-commit`
+
+`git log` 的常用选项：
+
+![image](images/git_log_options.jpeg)
+
+`git log --pretty=format` 的常用选项：
+
+![image](./images/git_log_format_options.jpeg)
+
+限制输出长度的选项：
+
+![image](./images/git_log_limit_options.jpeg)
+
+### 2.4 撤销操作
+
+#### 重新提交
+
+`$ git commit --amend`
+
+#### 取消暂存的文件
+
+`$ git reset HEAD <file>` 从暂存区撤销到工作区，既由暂存状态变为修改未暂存状态。
+
+#### 撤销对文件的修改
+
+`$ git checkout -- <file>` 撤销文件内容的修改
+
+### 2.5 远程仓库
+
+#### 查看远程仓库
+
+`$ git remote`
+
+选项 `-v` 显示读写远程仓库使用的简写与其对应的仓库地址
+
+#### 添加远程仓库
+
+`$ git remote add <remote-name> <url>`
+
+#### 从远程仓库中拉取
+
+`git fetch` 从远程拉取最新版本的数据到本地，但不会自动合并。
+
+`git pull` 从远程拉取最新版本的数据到本地，并与本地的分支合并，相当于 `git fetch` 和 `git merge`。
+
+#### 推送到远程仓库
+
+`$ git push [remote-name] [branch-name]`
+
+#### 检查远程仓库详细信息
+
+`$ git remote show <remote-name>`
+
+#### 重命名远程仓库
+
+`$ git remote rename <old-name> <new-name>`
+
+#### 删除远程仓库
+
+`$ git remote rm <remote-name>`
