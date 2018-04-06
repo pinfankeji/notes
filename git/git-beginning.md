@@ -104,3 +104,93 @@ Git 学习入门笔记
 #### 克隆现有的仓库
 
 `$ git clone <url> [<directory>]`
+
+### 2.2 记录更新到仓库
+
+工作目录下的文件状态：
+
+1. 已跟踪 tracked
+2. 未跟踪 untracked
+
+Git 中文件的状态变化周期
+
+![image](https://git-scm.com/book/en/v2/images/lifecycle.png)
+
+#### 查看当前文件状态
+
+查看详细状态：
+
+`$ git status`
+
+查看状态简览
+`$ git status -s` 或 `$ git status --short`
+
+#### 跟踪新文件，加入暂存区
+
+`$ git add <file>`
+
+#### 已修改的文件，加入暂存区
+
+`$ git add <file>`
+
+#### 忽略文件
+
+`.gitignore`
+
+文件格式规范：
+
+- 空行和以 `#` 开头的行都会被忽略
+- 支持标准的 `glob` 模式匹配
+- 使用 `/` 开头防止递归
+- 使用 `/` 结尾指定目录
+- 使用 `!` 开头取反
+
+`glob` 模式：
+
+- `*` 匹配0个或多个任意字符
+- `[]` 匹配任何一个方括号中的字符
+- `?` 匹配一个任意字符
+- `[0-9]` 匹配区间范围
+- `**` 匹配任意中间目录
+
+`.gitignore` 文件列表：
+
+[https://github.com/github/gitignore](https://github.com/github/gitignore)
+
+#### 对比文件，查看已暂存和未暂存文件的修改内容
+
+比较工作目录和暂存区文件的差异：
+`$ git diff`
+
+比较暂存区的文件和仓库文件的差异：
+`$ git diff --cached` 或 `$git diff --staged` (Git 1.6.1版本后)
+
+#### 提交更新
+
+把暂存区的文件快照提交到仓库中：
+
+`$ git commit -m "提交说明"`
+
+#### 路过暂存区域，直接提交
+
+使用 `-a` 把已跟踪的文件直接提交到仓库
+
+`$ git commit -a -m "提交说明"`
+
+#### 移除文件
+
+移除文件，是指把文件从已跟踪清单中移除，确切的说是从暂存区移除，同时从工作目录中移除：
+
+`$ git rm <file>`
+
+仅从跟踪清单中移除，并不从工作目录中删除：
+
+`$ git rm --cached <file>`
+
+如果文件已经修改且保存到暂存区，需要使用 `-f` 强制移除
+
+`$ git rm -f <file>`
+
+#### 移动文件
+
+`$ git mv <file_from> <file_to>`
