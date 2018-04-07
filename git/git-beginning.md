@@ -315,3 +315,99 @@ Git 中文件的状态变化周期
 
 - `$ git config --global alias.unstage 'reset HEAD --'`
 - `$ git config --global alias.last 'log -1 HEAD'`
+
+## 3 Git分支
+
+### 3.1 分支简介
+
+`HEAD` 指针
+
+### 3.2 分支的新建与合并
+
+- 创建分支： `$ git branch <branch-name>`
+- 切换分支： `$ git checkout <branch-name>`
+- 创建并切换分支： `$ git checkout -b <branch-name>`
+- 合并分支： `$ git merge <branch-name>`
+
+### 3.3 分支管理
+
+- 删除分支： `$ git branch -d <branch-name>`
+- 强制删除分支： `$ git branch -D <branch-name>`
+- 查看分支： `$ git branch`
+- 查看分支的最后一次提交： `$ git branch -v`
+- 查看分支的最后提交和跟踪分支： `$ git branch -vv`
+- 查看合并到当前分支的所有分支： `$ git branch --merged`
+
+### 3.4 分支开发工作流
+
+#### 长期分支
+
+`master` 分支，稳定分支
+
+渐进稳定分支的线性图：
+
+![image](https://git-scm.com/book/en/v2/images/lr-branches-1.png)
+
+渐进稳定分支的流水线视图：
+
+![image](https://git-scm.com/book/en/v2/images/lr-branches-2.png)
+
+#### 特性分支
+
+短期分支，实现单一特性。
+
+拥有多个特性分支的提交历史：
+
+![image](https://git-scm.com/book/en/v2/images/topic-branches-1.png)
+
+### 3.5 远程分支
+
+`<remote-name>/<branch-name>`
+
+从远程克隆时， `git clone` 命令默认远程仓库名为 `origin` ，并在本地创建一个 `master` 分支。
+
+克隆之后的服务器与本地仓库：
+
+![image](https://git-scm.com/book/en/v2/images/remote-branches-1.png)
+
+本地与远程的工作分叉：
+
+![image](https://git-scm.com/book/en/v2/images/remote-branches-2.png)
+
+从远程抓取数据到本地：
+
+![image](https://git-scm.com/book/en/v2/images/remote-branches-3.png)
+
+#### 推送分支
+
+`$ git push <remote-name> <branch-name>`
+
+#### 跟踪分支
+
+跟踪分支是与远程分支有直接关系的本地分支。在跟踪分支上 `git pull`时，Git能自动识别去哪个服务器上抓取、合并到哪个分支。
+
+克隆项目时，自动创建一个跟踪 `origin/master` 的 `master` 分支。
+
+自己设置跟踪分支，分支名称可以与远程分支名不同： `$ git checkout -b <branch-name> <remote-name>/<branch-name>`
+
+使用 `--track` 选项设置跟踪同名的远程分支： `$ git checkout --track <remote-name>/<branch-name>`
+
+设置已存在的本地分支跟踪一个刚拉取下来的远程分支，或者修改正在跟踪的分支，使用 `-u` 或 `--set-upstream-to`：
+`$ git branch -u <remote-name>/<branch-name>`
+
+#### 删除远程分支
+
+`$ git push <remote-name> --delete <branch-name>`
+
+### 3.6 变基
+
+`rebase` 将提交到某一分支上的修改移至另一分支上。
+
+1. `$ git checkout dev`
+1. `$ git rebase master`
+1. `$ git checkout master`
+1. `$ git merge dev`
+
+使用变基的总原则是：
+
+***只对本地修改执行变基操作，从不对已推送至别处的提交执行变基操作***
