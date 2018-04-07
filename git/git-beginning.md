@@ -1,6 +1,11 @@
 # Git 入门笔记
 
-Git 学习入门笔记
+Git 学习笔记
+
+学习资料：
+
+- [Pro Git](https://git-scm.com/book/zh/v2)
+- [Git 教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
 ## 1. 起步
 
@@ -298,3 +303,15 @@ Git 中文件的状态变化周期
 
 - 删除本地标签： `$ git tag -d <tag-name>`
 - 删除远程标签： `$ git push origin :ref/tags/<tag-name>`
+
+### 2.7 Git 别名
+
+使用 `git config` 为 Git 命令设置别名
+
+- `$ git config --global alias.ck checkout`
+- `$ git config --global alias.br branch`
+- `$ git config --global alias.cm commit`
+- `$ git config --global alias.st status`
+
+- `$ git config --global alias.unstage 'reset HEAD --'`
+- `$ git config --global alias.last 'log -1 HEAD'`
