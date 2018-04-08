@@ -170,6 +170,9 @@ Git 中文件的状态变化周期
 比较暂存区的文件和仓库文件的差异：
 `$ git diff --cached` 或 `$git diff --staged` (Git 1.6.1版本后)
 
+检查空白错误：
+`$ git diff --check`
+
 #### 提交更新
 
 把暂存区的文件快照提交到仓库中：
@@ -316,7 +319,7 @@ Git 中文件的状态变化周期
 - `$ git config --global alias.unstage 'reset HEAD --'`
 - `$ git config --global alias.last 'log -1 HEAD'`
 
-## 3 Git分支
+## 3. Git分支
 
 ### 3.1 分支简介
 
@@ -392,7 +395,7 @@ Git 中文件的状态变化周期
 
 使用 `--track` 选项设置跟踪同名的远程分支： `$ git checkout --track <remote-name>/<branch-name>`
 
-设置已存在的本地分支跟踪一个刚拉取下来的远程分支，或者修改正在跟踪的分支，使用 `-u` 或 `--set-upstream-to`：
+设置已存在的本地分支跟踪一个刚拉取下来的远程分支，或者修改正在跟踪的分支，使用 `-u` 或 `--set-upstream-to`：
 `$ git branch -u <remote-name>/<branch-name>`
 
 #### 删除远程分支
