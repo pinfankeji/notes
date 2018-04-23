@@ -245,9 +245,13 @@ Git 中文件的状态变化周期
 
 选项 `-v` 显示读写远程仓库使用的简写与其对应的仓库地址
 
-#### 添加远程仓库
+#### 关联远程仓库
 
 `$ git remote add <remote-name> <url>`
+
+#### 取消关联远程仓库
+
+`$ git remote remove <remote-name>`
 
 #### 从远程仓库中拉取
 
